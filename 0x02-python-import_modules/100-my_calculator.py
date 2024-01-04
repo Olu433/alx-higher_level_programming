@@ -1,29 +1,26 @@
 #!/usr/bin/python3
-
-"""
-File_name: 100-my_calculator.py
-Created: 11th of May, 2023
-Auth: David James Taiye (Official0mega)
-Size: undefined
-Project: 0x02-python-import_modules
-Status: submitted.
-"""
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     import sys
+
+    nargs = len(sys.argv) - 1
+    if nargs != 3:
+        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
+        sys.exit(1)
+
+    op = sys.argv[2]
+    if op != '+' and op != '-' and op != '*' and op != '/':
+        print("Unknown operator. Available operators: +, -, * and /")
+        sys.exit(1)
+
     from calculator_1 import add, sub, mul, div
-    if len(sys.argv) == 4:
-        funcs = [('+', add), ('-', sub), ('*', mul), ('/', div)]
-        for func in funcs:
-            if sys.argv[2] == func[0]:
-                a = int(sys.argv[1])
-                b = int(sys.argv[3])
-                print('{} {} {} = {}'.format(
-                    a, func[0], b, func[1](a, b)
-                    ))
-                sys.exit()
-        print('Unknown operator. Available operators: +, -, * and /')
-        sys.exit(1)
+    a = int(sys.argv[1])
+    b = int(sys.argv[3])
+
+    if op == '+':
+        print("{} + {} = {}".format(a, b, add(a, b)))
+    elif op == '-':
+        print("{} - {} = {}".format(a, b, sub(a, b)))
+    elif op == '*':
+        print("{} * {} = {}".format(a, b, mul(a, b)))
     else:
-        print('Usage: {} <a> <operator> <b>'.format(sys.argv[0]))
-        sys.exit(1)
+        print("{} / {} = {}".format(a, b, div(a, b)))
