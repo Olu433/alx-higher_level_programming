@@ -1,28 +1,29 @@
 #!/usr/bin/python3
+
+"""
+File_name: 7-add_tuple.py
+Created: 13th of May, 2023
+Auth: David James Taiye (Official0mega)
+Size: undefined
+Project: 0x03-python-data_structures
+Status: submitted.
+"""
+
+
 def add_tuple(tuple_a=(), tuple_b=()):
-    len_a = len(tuple_a)
-    len_b = len(tuple_b)
 
-    if len_a == 0:
-        a1 = 0
-        a2 = 0
-    elif len_a == 1:
-        a1 = tuple_a[0]
-        a2 = 0
-    else:
-        a1 = tuple_a[0]
-        a2 = tuple_a[1]
-
-    if len_b == 0:
-        b1 = 0
-        b2 = 0
-    elif len_b == 1:
-        b1 = tuple_b[0]
-        b2 = 0
-    else:
-        b1 = tuple_b[0]
-        b2 = tuple_b[1]
-
-    new_tuple = (a1 + b1, a2 + b2)
-
-    return (new_tuple)
+    """
+    # This adds first two Items of the 2 Given Tuples:
+    # Variables:
+    # tuple_a (tuple): The first tuple:
+    # tuple_b (tuple): The first tuple:
+    # A tuple that sum the first two items in the given tuple:
+    """
+    a = tuple_a or (0, 0)
+    b = tuple_b or (0, 0)
+    if len(tuple_a) == 1:
+        a = (tuple_a[0], 0)
+    if len(tuple_b) == 1:
+        b = (tuple_b[0], 0)
+    set_tuple = (a[0] + b[0], a[1] + b[1])
+    return set_tuple
