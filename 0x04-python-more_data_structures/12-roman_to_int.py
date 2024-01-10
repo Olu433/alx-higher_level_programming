@@ -1,51 +1,40 @@
 #!/usr/bin/python3
+def to_subtract(list_num):
+    to_sub = 0
+    max_list = max(list_num)
 
-"""
-File_name: 12-roman_to_int.py
-Created: 17th of May, 2023
-Auth: David James Taiye (Official0mega)
-Size: undefined
-Project: 0x04-python-more_data_structures
-Status: submitted.
-"""
+    for n in list_num:
+        if max_list > n:
+            to_sub += n
+
+    return (max_list - to_sub)
 
 
 def roman_to_int(roman_string):
-
-    """
-    # Technical interview preparation:
-    # Create a function that converts a Roman numeral to an integer.
-    # You can assume the number will be between 1 to 3999.
-    # def roman_to_int(roman_string) must return an integer
-    # VARIABLE(" "):
-    # roman_to_int(int): Roman to Integer
-    # Return: If the roman_string is not a string or None, return 0
-    """
+    if not roman_string:
+        return 0
 
     if not isinstance(roman_string, str):
         return 0
 
-    roman_values = {
-        'I': 1,
-        'V': 5,
-        'X': 10,
-        'L': 50,
-        'C': 100,
-        'D': 500,
-        'M': 1000
-    }
+    rom_n = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    list_keys = list(rom_n.keys())
 
-    total = 0
-    prev_value = 0
+    num = 0
+    last_rom = 0
+    list_num = [0]
 
-    for symbol in reversed(roman_string):
-        value = roman_values.get(symbol, 0)
+    for ch in roman_string:
+        for r_num in list_keys:
+            if r_num == ch:
+                if rom_n.get(ch) <= last_rom:
+                    num += to_subtract(list_num)
+                    list_num = [rom_n.get(ch)]
+                else:
+                    list_num.append(rom_n.get(ch))
 
-        if value >= prev_value:
-            total += value
-        else:
-            total -= value
+                last_rom = rom_n.get(ch)
 
-        prev_value = value
+    num += to_subtract(list_num)
 
-    return total
+    return (num)
