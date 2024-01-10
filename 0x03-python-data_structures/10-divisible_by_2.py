@@ -1,28 +1,11 @@
 #!/usr/bin/python3
-
-"""
-File_name: 10-divisible_by_2.py
-Created: 13th of May, 2023
-Auth: David James Taiye (Official0mega)
-Size: undefined
-Project: 0x03-python-data_structures
-Status: submitted.
-"""
-
-
 def divisible_by_2(my_list=[]):
+    check_div = []
 
-    """
-    # This searches for multiples of 2:
-    # Variables:
-    # my_list(list): The first tuple..
-    # Lists of Bool stating the possibility of division
-    # of the number with 2 at same position in the List:
-    """
-    lists = []
-    for num in my_list:
-        if num % 2 == 0:
-            lists.append(True)
+    for i in range(len(my_list)):
+        if my_list[i] % 2 == 0:
+            check_div.append(True)
         else:
-            lists.append(False)
-    return lists
+            check_div.append(False)
+
+    return (check_div)
