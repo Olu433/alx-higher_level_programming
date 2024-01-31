@@ -1,107 +1,97 @@
 #!/usr/bin/python3
+"""calculates and return the area of the rectangle
 """
+import sys
 
-This module contains an algorithm that resolves the N-Queen puzzle
-using backtracking
-
-"""
-
-
-def isSafe(m_queen, nqueen):
-    """ Method that determines if the queens can or can't kill each other
-
-    Args:
-        m_queen: array that has the queens positions
-        nqueen: queen number
-
-    Returns:
-        True: when queens can't kill each other
-        False: when some of the queens can kill
-
+def is_safe(board, row, col):
+    """
+    # Chess grandmaster Judit Polgár, the strongest female chess...
+    # player of all time...The N queens puzzle is the challenge of....
+    # ....placing N non-attacking queens on an N×N chessboard...
+    # Write a program that solves the N queens problem.....
+    # VARIABLE(" "):
+    # Return: Always 0, (Success).
+    """
+    """ Check if it's safe to place a queen at board[row][col]
     """
 
-    for i in range(nqueen):
-
-        if m_queen[i] == m_queen[nqueen]:
+    # Check row on the left side
+    for i in range(col):
+        if board[row][i] == 1:
             return False
 
-        if abs(m_queen[i] - m_queen[nqueen]) == abs(i - nqueen):
+    # Check upper diagonal on the left side
+    i, j = row, col
+    while i >= 0 and j >= 0:
+        if board[i][j] == 1:
             return False
+        i -= 1
+        j -= 1
+
+    # Check lower diagonal on the left side
+    i, j = row, col
+    while i < N and j >= 0:
+        if board[i][j] == 1:
+            return False
+        i += 1
+        j -= 1
 
     return True
 
 
-def print_result(m_queen, nqueen):
-    """ Method that prints the list with the Queens positions
-
-    Args:
-        m_queen: array that has the queens positions
-        nqueen: queen number
-
+def solve_nqueens(board, col):
+    """ Solve the N-Queens problem using backtracking
     """
 
-    res = []
+    # Base case: If all queens are placed
+    if col >= N:
+        print_solution(board)
+        return True
 
-    for i in range(nqueen):
-        res.append([i, m_queen[i]])
+    # Consider this column and try placing a queen in all rows
+    for i in range(N):
+        if is_safe(board, i, col):
+            board[i][col] = 1
+            """Place the queen"""
 
-    print(res)
+        # Recur to place the rest of the queens
+        solve_nqueens(board, col + 1)
+
+        # Backtrack and remove the queen from this cell
+        board[i][col] = 0
 
 
-def Queen(m_queen, nqueen):
-    """ Recursive function that executes the Backtracking algorithm
-
-    Args:
-        m_queen: array that has the queens positions
-        nqueen: queen number
-
+def print_solution(board):
+    """ Print the solution in the required format
     """
 
-    if nqueen is len(m_queen):
-        print_result(m_queen, nqueen)
-        return
-
-    m_queen[nqueen] = -1
-
-    while((m_queen[nqueen] < len(m_queen) - 1)):
-
-        m_queen[nqueen] += 1
-
-        if isSafe(m_queen, nqueen) is True:
-
-            if nqueen is not len(m_queen):
-                Queen(m_queen, nqueen + 1)
+    solution = []
+    for i in range(N):
+        for j in range(N):
+            if board[i][j] == 1:
+                solution.append([i, j])
+    print(solution)
 
 
-def solveNQueen(size):
-    """ Function that invokes the Backtracking algorithm
-
-    Args:
-        size: size of the chessboard
-
-    """
-
-    m_queen = [-1 for i in range(size)]
-
-    Queen(m_queen, 0)
-
-
-if __name__ == '__main__':
-
-    import sys
-
-    if len(sys.argv) == 1 or len(sys.argv) > 2:
+if __name__ == "__main__":
+    # Check if the number of arguments is correct
+    if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
 
     try:
-        size = int(sys.argv[1])
-    except:
+        N = int(sys.argv[1])
+    except ValueError:
         print("N must be a number")
         sys.exit(1)
 
-    if size < 4:
+    # Check if N is at least 4
+    if N < 4:
         print("N must be at least 4")
         sys.exit(1)
 
-    solveNQueen(size)
+    # Initialize an empty chessboard
+    board = [[0 for _ in range(N)] for _ in range(N)]
+
+    # Solve the N-Queens problem
+    solve_nqueens(board, 0)
