@@ -1,5 +1,5 @@
 # Higher-level programming - Python
-Module of **High-level programming** and **Python**, carried out during **Full Stack Software Engineering studies** at **[Holberton School](https://www.holbertonschool.com/)**.
+Module of **High-level programming** and **Python**, carried out during **Full Stack Software Engineering studies** at **ALX**.
 
 ## Technologies
 * Shell Scripts are written in Bash 4.3.11(1)
