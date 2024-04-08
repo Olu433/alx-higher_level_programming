@@ -1,1 +1,4 @@
-$('HEADER').css('color', '#FF0000');
+'use strict';
+$(() => {
+  $('header').css('color', '#FF0000');
+});

@@ -1,3 +1,10 @@
-$.get('https://swapi.co/api/films/?format=json', function (data) {
-  $('UL#list_movies').append(...data.results.map(movie => `<li>${movie.title}</li>`));
+'use strict';
+$(() => {
+  const BASE_URL = 'https://swapi-api.hbtn.io/api';
+
+  $.get(`${BASE_URL}/films/?format=json`, (data, status) => {
+    data.results.forEach(film => {
+      $('UL#list_movies').append(`<li>${film.title}</li>`);
+    });
+  });
 });

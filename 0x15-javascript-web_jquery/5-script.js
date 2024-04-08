@@ -1,3 +1,9 @@
-$('DIV#add_item').click(function () {
-  $('UL.my_list').append('<li>Item</li>');
+'use strict';
+$(() => {
+  $('DIV#add_item').click(() => {
+    const newItem = document.createElement('li');
+
+    newItem.textContent = 'Item';
+    $('UL.my_list').append(newItem);
+  });
 });
