@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Higher-level programming - Python
 Module of **High-level programming** and **Python**, carried out during **Full Stack Software Engineering studies** at **ALX**.
 
@@ -30,3 +31,6 @@ All of the following folders are projects done during the studies:
 | [`0x0D-SQL_introduction`](https://github.com/luischaparroc/holbertonschool-higher_level_programming/tree/master/0x0D-SQL_introduction) | It aims to learn about databases, relational databases, subqueries, tables, **MySQL** statements and functions |
 | [`0x0E-SQL_more_queries`](https://github.com/luischaparroc/holbertonschool-higher_level_programming/tree/master/0x0E-SQL_more_queries) | It aims to learn about how to create a new user, manage privileges for a user, `PRIMARY KEY`, `FOREIGN KEY`, constraints, subqueries, `JOIN` and `UNION` with **MySQL** |
 | [`0x0F-python-object_relational_mapping`](https://github.com/luischaparroc/holbertonschool-higher_level_programming/tree/master/0x0F-python-object_relational_mapping) | It aims to learn about how to connect to a MySQL database from a Python script, what ORM means and how to map a Python Class to a MySQL table |
+=======
+Readme.md
+>>>>>>> 478b761c60d90ee5071571dd11b1d202cadbaee1
